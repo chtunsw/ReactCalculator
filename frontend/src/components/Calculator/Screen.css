@@ -1,3 +1,5 @@
-.container {
+.screen-container {
+  margin: 2px;
+  text-align: right;
   color: white;
 }

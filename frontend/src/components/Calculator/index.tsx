@@ -16,7 +16,7 @@ const Calculator = () => {
   const [records, setRecords] = useState<Record[]>([]);
   const [screenValue, setScreenValue] = useState("0");
   return (
-    <div className="container">
+    <div className="calculator-container">
       <Screen value={screenValue} />
       <div>
         <ScientificButtonGroup />

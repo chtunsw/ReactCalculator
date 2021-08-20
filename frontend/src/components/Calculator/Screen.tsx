@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Screen = ({ value }: Props) => {
-  return <div className="container">{value}</div>;
+  return <div className="screen-container">{value}</div>;
 };
 
 export default Screen;
