@@ -1,5 +1,7 @@
 import React from "react";
 
-export default () => {
+const ScientificButtonGroup = () => {
   return <div></div>;
 };
+
+export default ScientificButtonGroup;

@@ -5,6 +5,8 @@ interface Props {
   value: string;
 }
 
-export default ({ value }: Props) => {
+const Screen = ({ value }: Props) => {
   return <div className="container">{value}</div>;
 };
+
+export default Screen;

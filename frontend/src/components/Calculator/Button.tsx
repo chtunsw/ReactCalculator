@@ -6,10 +6,12 @@ interface Props {
   action: () => void;
 }
 
-export default ({ name, action }: Props) => {
+const Button = ({ name, action }: Props) => {
   return (
     <div className="container" onClick={action}>
       {name}
     </div>
   );
 };
+
+export default Button;

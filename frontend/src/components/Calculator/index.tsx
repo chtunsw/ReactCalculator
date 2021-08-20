@@ -5,7 +5,7 @@ import ScientificButtonGroup from "./ScientificButtonGroup";
 import History from "./History";
 import "./index.css";
 
-export default () => {
+const Calculator = () => {
   const [screenValue, setScreenValue] = useState("0");
   return (
     <div className="container">
@@ -18,3 +18,5 @@ export default () => {
     </div>
   );
 };
+
+export default Calculator;
