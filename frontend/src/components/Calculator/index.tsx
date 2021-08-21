@@ -5,7 +5,7 @@ import ScientificButtonGroup from "./ScientificButtonGroup";
 import History, { Record } from "./History";
 import "./index.css";
 
-type Operator = "+" | "-" | "*" | "/";
+type Operator = "+" | "-" | "\\times" | "\\div";
 type NumberPointer = "result" | "optNumber";
 
 const executeOperation = (a: number, b: number, operator: Operator) => {
@@ -13,7 +13,7 @@ const executeOperation = (a: number, b: number, operator: Operator) => {
     return a + b;
   } else if (operator === "-") {
     return a - b;
-  } else if (operator === "*") {
+  } else if (operator === "\\times") {
     return a * b;
   } else {
     return a / b;
@@ -71,14 +71,13 @@ const Calculator = () => {
         setResult(String(newRes));
         setScreenValue(String(newRes));
       }
-    } else if (actionName === "+") {
+    } else if (
+      actionName === "+" ||
+      actionName === "-" ||
+      actionName === "\\times" ||
+      actionName === "\\div"
+    ) {
       setOperator(actionName);
-    } else if (actionName === "-") {
-      setOperator(actionName);
-    } else if (actionName === "\\times") {
-      setOperator("*");
-    } else if (actionName === "\\div") {
-      setOperator("/");
     } else if (actionName === ".") {
       if (num !== null && !num.includes(".")) {
         setNum(num + ".");
