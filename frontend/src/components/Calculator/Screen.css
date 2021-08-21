@@ -1,5 +1,23 @@
 .screen-container {
-  margin: 2px;
+  width: 360px;
+  overflow: hidden;
+}
+
+.screen-input {
+  width: 100%;
+  box-sizing: border-box;
   text-align: right;
   color: white;
+  border: none;
+  background-color: transparent;
+}
+
+.screen-input:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .screen-container {
+    width: 144px;
+  }
 }

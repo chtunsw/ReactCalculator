@@ -6,7 +6,11 @@ interface Props {
 }
 
 const Screen = ({ value }: Props) => {
-  return <div className="screen-container">{value}</div>;
+  return (
+    <div className="screen-container">
+      <input className="screen-input" value={value} />
+    </div>
+  );
 };
 
 export default Screen;
