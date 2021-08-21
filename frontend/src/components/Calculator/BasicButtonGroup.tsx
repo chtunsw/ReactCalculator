@@ -1,8 +1,9 @@
 import React from "react";
-import Button, { ButtonType, ButtonSize } from "./Button";
+import { ButtonType, ButtonSize } from "./Button";
+import ButtonGroup from "./ButtonGroup";
 
 const BasicButtonGroup = () => {
-  const BasicButtonRows = [
+  const basicButtonGroup = [
     [
       {
         name: "C",
@@ -128,23 +129,7 @@ const BasicButtonGroup = () => {
       },
     ],
   ];
-  return (
-    <div>
-      {BasicButtonRows.map((buttonRow, index) => (
-        <div key={index}>
-          {buttonRow.map((button) => (
-            <Button
-              key={button.name}
-              name={button.name}
-              type={button.type}
-              size={button.size}
-              action={button.action}
-            />
-          ))}
-        </div>
-      ))}
-    </div>
-  );
+  return <ButtonGroup buttonGroup={basicButtonGroup} />;
 };
 
 export default BasicButtonGroup;

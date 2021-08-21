@@ -4,7 +4,7 @@ import "./Button.css";
 export type ButtonType = "number" | "operator" | "action" | "scientific";
 export type ButtonSize = "small" | "large";
 
-interface Props {
+export interface Props {
   name: string;
   type?: ButtonType;
   size?: ButtonSize;

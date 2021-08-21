@@ -1,0 +1,9 @@
+.scientific-button-group {
+  display: inline-block;
+}
+
+@media only screen and (max-width: 600px) {
+  .scientific-button-group {
+    display: none;
+  }
+}
