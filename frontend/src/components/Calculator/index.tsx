@@ -77,22 +77,41 @@ const Calculator = () => {
         setResult(String(newRes));
         setOptNumber(null);
         setScreenValue(String(newRes));
-        if (actionName === "=") {
-          setNumberPointer("result");
-        } else {
-          setOperator(actionName);
-          setNumberPointer("optNumber");
-        }
+      }
+      if (actionName === "=") {
+        setNumberPointer("result");
+      } else {
+        setOperator(actionName);
+        setNumberPointer("optNumber");
       }
     } else if (actionName === ".") {
       if (num !== null && !num.includes(".")) {
         setNum(num + ".");
         setScreenValue(num + ".");
       }
+    } else {
+      if (num === "0" || num === "-0" || num === null) {
+        setNum(actionName);
+        setScreenValue(actionName);
+      } else {
+        setNum(num + actionName);
+        setScreenValue(num + actionName);
+      }
     }
   };
   return (
     <div className="calculator-container">
+      {/* <div
+        style={{
+          color: "white",
+        }}
+      >
+        <div>result: {result}</div>
+        <div>operator: {operator}</div>
+        <div>optNumber: {optNumber}</div>
+        <div>numberPointer: {numberPointer}</div>
+        <div>screenValue: {screenValue}</div>
+      </div> */}
       <Screen value={screenValue} />
       <div>
         <ScientificButtonGroup />
