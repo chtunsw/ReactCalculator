@@ -8,6 +8,18 @@ import "./index.css";
 type Operator = "+" | "-" | "*" | "/";
 type NumberPointer = "result" | "optNumber";
 
+const executeOperation = (a: number, b: number, operator: Operator) => {
+  if (operator === "+") {
+    return a + b;
+  } else if (operator === "-") {
+    return a - b;
+  } else if (operator === "*") {
+    return a * b;
+  } else {
+    return a / b;
+  }
+};
+
 const Calculator = () => {
   const [result, setResult] = useState<string | null>("0");
   const [operator, setOperator] = useState<Operator | null>(null);
@@ -44,6 +56,29 @@ const Calculator = () => {
           setScreenValue(num.slice(1));
         }
       }
+    } else if (actionName === "\\%") {
+      if (num !== null) {
+        setNum(String(Number(num) / 100));
+        setScreenValue(String(Number(num) / 100));
+      }
+    } else if (actionName === "=") {
+      if (result !== null && optNumber !== null && operator !== null) {
+        const newRes = executeOperation(
+          Number(result),
+          Number(optNumber),
+          operator
+        );
+        setResult(String(newRes));
+        setScreenValue(String(newRes));
+      }
+    } else if (actionName === "+") {
+      setOperator(actionName);
+    } else if (actionName === "-") {
+      setOperator(actionName);
+    } else if (actionName === "\\times") {
+      setOperator("*");
+    } else if (actionName === "\\div") {
+      setOperator("/");
     }
   };
   return (
