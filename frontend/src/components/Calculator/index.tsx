@@ -79,6 +79,11 @@ const Calculator = () => {
       setOperator("*");
     } else if (actionName === "\\div") {
       setOperator("/");
+    } else if (actionName === ".") {
+      if (num !== null && !num.includes(".")) {
+        setNum(num + ".");
+        setScreenValue(num + ".");
+      }
     }
   };
   return (
