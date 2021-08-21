@@ -109,6 +109,7 @@ const Calculator = () => {
   };
   return (
     <div className="calculator-container">
+      {/* FOR DEBUG ONLY */}
       {/* <div
         style={{
           color: "white",
