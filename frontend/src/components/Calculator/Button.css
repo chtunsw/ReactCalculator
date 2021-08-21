@@ -4,11 +4,36 @@
 }
 
 .button-body {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   border-radius: 16px;
+  font: "Roboto";
+  font-size: 0.6rem;
   color: white;
+  cursor: pointer;
+}
+
+.button-body::after {
+  content: "";
+  position: absolute;
+  padding: 50%;
+  background: white;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.button-body:active::after {
+  opacity: 1;
+  transition: 0s;
+}
+
+.button-body .MathJax,
+.button-body .mjx-chtml,
+.button-body .MathJax_SVG {
+  pointer-events: none;
 }
 
 .button-number {
