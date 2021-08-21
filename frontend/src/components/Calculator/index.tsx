@@ -75,6 +75,7 @@ const Calculator = () => {
           operator
         );
         setResult(String(newRes));
+        setOperator(null);
         setOptNumber(null);
         setScreenValue(String(newRes));
       }
