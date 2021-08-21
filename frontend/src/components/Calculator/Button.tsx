@@ -1,4 +1,5 @@
 import React from "react";
+import MathJax from "react-mathjax";
 import "./Button.css";
 
 export type ButtonType = "number" | "operator" | "action" | "scientific";
@@ -35,11 +36,15 @@ const getButtonBodyClassName = (type: ButtonType, size: ButtonSize) => {
 
 const Button = ({ name, type = "number", size = "small", action }: Props) => {
   return (
-    <div className="button-container" onClick={action}>
-      <div className={getButtonBodyClassName(type, size)}>
-        <span>{name}</span>
+    <MathJax.Provider>
+      <div className="button-container" onClick={action}>
+        <div className={getButtonBodyClassName(type, size)}>
+          <span>
+            <MathJax.Node inline formula={name} />
+          </span>
+        </div>
       </div>
-    </div>
+    </MathJax.Provider>
   );
 };
 
