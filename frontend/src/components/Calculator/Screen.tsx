@@ -8,7 +8,7 @@ interface Props {
 const Screen = ({ value }: Props) => {
   return (
     <div className="screen-container">
-      <input className="screen-input" value={value} />
+      <input className="screen-input" value={value} readOnly />
     </div>
   );
 };
