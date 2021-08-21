@@ -143,7 +143,7 @@ const BasicButtonGroup = ({ useAction }: Props) => {
       {
         name: ".",
         action: useAction("."),
-        type: "operator" as ButtonType,
+        type: "number" as ButtonType,
         size: "small" as ButtonSize,
       },
       {
