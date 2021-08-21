@@ -61,7 +61,13 @@ const Calculator = () => {
         setNum(String(Number(num) / 100));
         setScreenValue(String(Number(num) / 100));
       }
-    } else if (actionName === "=") {
+    } else if (
+      actionName === "=" ||
+      actionName === "+" ||
+      actionName === "-" ||
+      actionName === "\\times" ||
+      actionName === "\\div"
+    ) {
       if (result !== null && optNumber !== null && operator !== null) {
         const newRes = executeOperation(
           Number(result),
@@ -69,15 +75,15 @@ const Calculator = () => {
           operator
         );
         setResult(String(newRes));
+        setOptNumber(null);
         setScreenValue(String(newRes));
+        if (actionName === "=") {
+          setNumberPointer("result");
+        } else {
+          setOperator(actionName);
+          setNumberPointer("optNumber");
+        }
       }
-    } else if (
-      actionName === "+" ||
-      actionName === "-" ||
-      actionName === "\\times" ||
-      actionName === "\\div"
-    ) {
-      setOperator(actionName);
     } else if (actionName === ".") {
       if (num !== null && !num.includes(".")) {
         setNum(num + ".");
