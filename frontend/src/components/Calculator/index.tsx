@@ -38,14 +38,18 @@ const Calculator = () => {
     }
   };
 
+  const reset = () => {
+    setResult("0");
+    setOperator(null);
+    setOptNumber(null);
+    setNumberPointer("result");
+    setScreenValue("0");
+  };
+
   const useAction = (actionName: ActionName) => () => {
     const [num, setNum] = getNumAndSetNum(numberPointer);
     if (actionName === "C") {
-      setResult("0");
-      setOperator(null);
-      setOptNumber(null);
-      setNumberPointer("result");
-      setScreenValue("0");
+      reset();
     } else if (actionName === "+/-") {
       if (num !== null) {
         if (num[0] !== "-") {
@@ -91,9 +95,12 @@ const Calculator = () => {
         setScreenValue(num + ".");
       }
     } else {
-      if (num === "0" || num === "-0" || num === null) {
+      if (num === "0" || num === "Infinity" || num === null) {
         setNum(actionName);
         setScreenValue(actionName);
+      } else if (num === "-0" || num === "-Infinity") {
+        setNum("-" + actionName);
+        setScreenValue("-" + actionName);
       } else {
         setNum(num + actionName);
         setScreenValue(num + actionName);
