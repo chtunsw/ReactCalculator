@@ -4,7 +4,7 @@ import ButtonGroup from "./ButtonGroup";
 import "./ScientificButtonGroup.css";
 
 const ScientificButtonGroup = () => {
-  const basicButtonGroup = [
+  const scientificButtonGroup = [
     [
       {
         name: "(",
@@ -198,7 +198,7 @@ const ScientificButtonGroup = () => {
   ];
   return (
     <div className="scientific-button-group">
-      <ButtonGroup buttonGroup={basicButtonGroup} />
+      <ButtonGroup buttonGroup={scientificButtonGroup} />
     </div>
   );
 };
