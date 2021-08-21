@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import moment from "moment";
 import Screen from "./Screen";
 import BasicButtonGroup, { ActionName } from "./BasicButtonGroup";
 import ScientificButtonGroup from "./ScientificButtonGroup";
@@ -7,6 +8,8 @@ import "./index.css";
 
 type Operator = "+" | "-" | "\\times" | "\\div";
 type NumberPointer = "result" | "optNumber";
+
+const HISTORY_KEEPING_DAYS = 7;
 
 const executeOperation = (a: number, b: number, operator: Operator) => {
   if (operator === "+") {
@@ -25,8 +28,16 @@ const Calculator = () => {
   const [operator, setOperator] = useState<Operator | null>(null);
   const [optNumber, setOptNumber] = useState<string | null>(null);
   const [numberPointer, setNumberPointer] = useState<NumberPointer>("result");
-  const [records, setRecords] = useState<Record[]>([]);
   const [screenValue, setScreenValue] = useState("0");
+  const today = moment(new Date());
+  const todayString = today.format("YYYY-MM-DD");
+  const calculatorHistory = localStorage.getItem("calculatorHistory");
+  let historyRecords: Record[] =
+    calculatorHistory && JSON.parse(calculatorHistory);
+  const filteredRecords = historyRecords.filter(
+    (record) => today.diff(moment(record.date), "days") <= HISTORY_KEEPING_DAYS
+  );
+  const [records, setRecords] = useState<Record[]>(filteredRecords);
 
   const getNumAndSetNum = (
     numberPointer: NumberPointer
@@ -44,6 +55,12 @@ const Calculator = () => {
     setOptNumber(null);
     setNumberPointer("result");
     setScreenValue("0");
+  };
+
+  const addRecord = (record: Record) => {
+    const updatedRecords = [record, ...records];
+    setRecords(updatedRecords);
+    localStorage.setItem("calculatorHistory", JSON.stringify(updatedRecords));
   };
 
   const useAction = (actionName: ActionName) => () => {
@@ -78,6 +95,12 @@ const Calculator = () => {
           Number(optNumber),
           operator
         );
+        const newRecord = {
+          date: todayString,
+          operation: `${result} ${operator} ${optNumber} =`,
+          result: String(newRes),
+        };
+        addRecord(newRecord);
         setResult(String(newRes));
         setOperator(null);
         setOptNumber(null);
@@ -126,7 +149,7 @@ const Calculator = () => {
         <ScientificButtonGroup />
         <BasicButtonGroup useAction={useAction} />
       </div>
-      <History />
+      <History records={records} />
     </div>
   );
 };
