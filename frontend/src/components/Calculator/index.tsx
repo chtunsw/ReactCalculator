@@ -90,7 +90,7 @@ const Calculator = () => {
         setNumberPointer("optNumber");
       }
     } else if (actionName === ".") {
-      if (num !== null && !num.includes(".")) {
+      if (num !== null && !num.includes("Infinity") && !num.includes(".")) {
         setNum(num + ".");
         setScreenValue(num + ".");
       }
