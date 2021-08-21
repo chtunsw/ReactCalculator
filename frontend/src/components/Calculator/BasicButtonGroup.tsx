@@ -18,13 +18,13 @@ const BasicButtonGroup = () => {
         size: "small" as ButtonSize,
       },
       {
-        name: "%",
+        name: "\\%",
         action: undefined,
         type: "action" as ButtonType,
         size: "small" as ButtonSize,
       },
       {
-        name: "÷",
+        name: "\\div",
         action: undefined,
         type: "operator" as ButtonType,
         size: "small" as ButtonSize,
@@ -50,7 +50,7 @@ const BasicButtonGroup = () => {
         size: "small" as ButtonSize,
       },
       {
-        name: "×",
+        name: "\\times",
         action: undefined,
         type: "operator" as ButtonType,
         size: "small" as ButtonSize,
