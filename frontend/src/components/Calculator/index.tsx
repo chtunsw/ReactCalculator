@@ -33,7 +33,7 @@ const Calculator = () => {
   const todayString = today.format("YYYY-MM-DD");
   const calculatorHistory = localStorage.getItem("calculatorHistory");
   let historyRecords: Record[] =
-    calculatorHistory && JSON.parse(calculatorHistory);
+    (calculatorHistory && JSON.parse(calculatorHistory)) || [];
   const filteredRecords = historyRecords.filter(
     (record) => today.diff(moment(record.date), "days") <= HISTORY_KEEPING_DAYS
   );
